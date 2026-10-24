@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>بانک‌ها و نئوبانک‌های ایرانی | Iranian Banks & Neo-banks Directory</title>
+  <meta name="description" content="فهرست جامع و به‌روز بانک‌ها، نئوبانک‌ها و موسسات اعتباری ایران همراه با لوگوهای برداری SVG و PNG، پیش‌شماره‌های کارت (BIN)، اعتبارسنجی شبا و کارت، و کتابخانه‌های تک‌فایلی JS، پایتون و PHP.">
+  <link rel="icon" type="image/svg+xml" href="logos/svg/cbi.svg">
+  <link rel="stylesheet" href="style.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;600;700&family=Vazirmatn:wght@400;600;700;800;900&display=swap" rel="stylesheet">
+</head>
+<body>
+
+  <!-- Header -->
+  <header>
+    <div class="container" style="display: flex; justify-content: space-between; align-items: center;">
+      <div style="display: flex; align-items: center; gap: 10px;">
+        <img src="logos/svg/cbi.svg" alt="Iranian Banks" width="32" height="32" style="border-radius: 6px;">
+        <span style="font-weight: 800; font-size: 1.1rem; color: #FFFFFF;">IranianBanks</span>
+        <span class="badge">v1.0.0</span>
+      </div>
+      <div>
+        <a href="https://github.com/mehrnet/IranianBanks" target="_blank" rel="noopener noreferrer" class="badge" style="background: #1E293B; color: #fff; padding: 6px 14px; text-decoration: none;">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z"/></svg>
+          <span>مشاهده در گیت‌هاب</span>
+        </a>
+      </div>
+    </div>
+  </header>
+
+  <!-- Hero -->
+  <div class="container hero">
+    <h1>دایرکتوری جامع بانک‌ها و نئوبانک‌های ایرانی</h1>
+    <p>
+      مجموعه کامل و استاندارد لوگوهای برداری (SVG) و تصویری (PNG) بانک‌ها، پیش‌شماره‌های کارت (BIN)، اعتبارسنجی شبا و کارت شتاب، همراه با پکیج‌های تک‌فایلی جهت استفاده در پروژه‌ها.
+    </p>
+    <div class="badges">
+      <span class="badge success">✓ ۳۷ بانک و نئوبانک</span>
+      <span class="badge success">✓ اعتبارسنجی Luhn کارت</span>
+      <span class="badge success">✓ اعتبارسنجی ISO 7064 شبا</span>
+      <span class="badge">نئوبانک‌های جدید: ویپاد، بلوبانک، بانکت، بانکینو، توبانک</span>
+    </div>
+  </div>
+
+  <main class="container">
+    <!-- Live Interactive Tester -->
+    <section class="tester-box">
+      <div class="tester-title">
+        <span>⚡ ابزار آنلاین تشخیص و اعتبارسنجی هوشمند کارت و شبا</span>
+      </div>
+      <div class="input-group">
+        <div class="input-bank-logo" id="previewBankLogo">
+          <span style="font-size: 1.2rem; color: #64748b;">💳</span>
+        </div>
+        <input
+          type="text"
+          id="cardShebaInput"
+          class="tester-input"
+          placeholder="شماره کارت (۱۶ رقم) یا شماره شبا (IR...)"
+          autocomplete="off"
+        >
+      </div>
+
+      <div class="quick-examples">
+        <span style="font-size: 0.74rem; color: var(--text-muted);">تست سریع:</span>
+        <button class="quick-btn" onclick="testSample('5022291234567890')">ویپاد (WePod)</button>
+        <button class="quick-btn" onclick="testSample('6219861812345678')">بلوبانک (BluBank)</button>
+        <button class="quick-btn" onclick="testSample('5057851234567890')">بانکینو (Bankino)</button>
+        <button class="quick-btn" onclick="testSample('6037991812345678')">بانک ملی (Melli)</button>
+        <button class="quick-btn" onclick="testSample('6104331234567890')">بانک ملت (Mellat)</button>
+        <button class="quick-btn" onclick="testSample('IR020120000000000000000001')">شبای بانک ملت</button>
+      </div>
+
+      <div id="resultPanel" class="result-panel">
+        <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 8px;">
+          <div style="display: flex; align-items: center; gap: 8px;">
+            <strong id="resultBankName" style="color: #FFFFFF; font-size: 1rem;">-</strong>
+            <span id="resultTypeBadge" class="badge">-</span>
+          </div>
+          <span id="resultValidityBadge" class="badge">-</span>
+        </div>
+        <div style="display: flex; gap: 16px; font-size: 0.8rem; color: var(--text-muted); flex-wrap: wrap;">
+          <div>کد بانک در شبا: <code id="resultIbanCode" class="meta-val">-</code></div>
+          <div>پیش‌شماره کارت: <code id="resultBin" class="meta-val">-</code></div>
+          <div>فرمت استاندارد: <code id="resultFormatted" class="meta-val">-</code></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Filters & Search -->
+    <div class="controls-bar">
+      <div class="filter-tabs">
+        <button class="tab-btn active" onclick="setFilter('all', this)">همه بانک‌ها (<span id="countAll">37</span>)</button>
+        <button class="tab-btn" onclick="setFilter('neobank', this)">نئوبانک‌ها و دیجیتال (<span id="countNeobank">7</span>)</button>
+        <button class="tab-btn" onclick="setFilter('bank', this)">بانک‌های دولتی و خصوصی (<span id="countBank">27</span>)</button>
+        <button class="tab-btn" onclick="setFilter('institution', this)">موسسات اعتباری (<span id="countInst">2</span>)</button>
+      </div>
+
+      <input
+        type="text"
+        id="searchInput"
+        class="search-input"
+        placeholder="جستجوی نام، پیش‌شماره کارت (BIN)، یا کد شبا..."
+      >
+    </div>
+
+    <!-- Banks Grid -->
+    <div id="banksGrid" class="banks-grid">
+      <!-- Dynamically filled by app.js -->
+    </div>
+
+    <!-- Code Integration Section -->
+    <section class="code-section">
+      <h3 style="font-size: 1.15rem; font-weight: 800; margin-bottom: 12px; color: #FFFFFF;">
+        🚀 کتابخانه‌های تک‌فایلی آماده (Single-File Client Libraries)
+      </h3>
+      <p style="font-size: 0.85rem; color: var(--text-muted); margin-bottom: 16px;">
+        این کتابخانه‌ها کاملاً مستقل (Zero-Dependency) طراحی شده‌اند و می‌توانید فایل منفرد مربوط به زبان خود را بدون هیچ وابستگی جانبی مستقیماً در پروژه‌تان اضافه کنید:
+      </p>
+
+      <div class="code-tabs">
+        <button class="tab-btn active" onclick="showCodeTab('js', this)">JavaScript / TypeScript</button>
+        <button class="tab-btn" onclick="showCodeTab('py', this)">Python</button>
+        <button class="tab-btn" onclick="showCodeTab('php', this)">PHP</button>
+      </div>
+
+      <div id="codeTab-js" class="code-box">
+<span style="color:#64748b">// 1. Import or include lib/iranian-banks.js</span>
+const { detect, isValidCard, isValidSheba, detectCard } = require('./lib/iranian-banks.js');
+
+<span style="color:#64748b">// Autodetect Card or SHEBA</span>
+const res = detect('5022291234567890');
+console.log(res.bank.name_fa); <span style="color:#21D3B2">// "ویپاد (ترابانک پاسارگاد)"</span>
+console.log(res.bank.color);   <span style="color:#21D3B2">// "#0E7490"</span>
+console.log(res.valid);        <span style="color:#21D3B2">// true/false (Luhn algorithm)</span>
+      </div>
+
+      <div id="codeTab-py" class="code-box" style="display: none;">
+<span style="color:#64748b"># 1. Import lib/iranian-banks.py</span>
+import iranian_banks as ib
+
+<span style="color:#64748b"># Autodetect Card or SHEBA</span>
+res = ib.detect('6219861812345678')
+print(res['bank']['name_fa'])  <span style="color:#21D3B2"># 'بلوبانک (نئوبانک سامان)'</span>
+print(res['valid'])            <span style="color:#21D3B2"># True/False</span>
+      </div>
+
+      <div id="codeTab-php" class="code-box" style="display: none;">
+<span style="color:#64748b">&lt;?php</span>
+require_once __DIR__ . '/lib/iranian-banks.php';
+use MehrNet\IranianBanks;
+
+<span style="color:#64748b">// Autodetect Card or SHEBA</span>
+$res = IranianBanks::detect('5022-2912-3456-7890');
+echo $res['bank']['name_fa']; <span style="color:#21D3B2">// "ویپاد (ترابانک پاسارگاد)"</span>
+echo $res['valid'] ? 'معتبر' : 'نامعتبر';
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="container">
+      <p style="margin-bottom: 6px;">
+        پروژه متن‌باز و آزاد تحت پروانه MIT — طراحی و نگهداری توسط <a href="https://mehrnet.com" target="_blank" rel="noopener noreferrer" style="color: #21D3B2; font-weight: 700;">MehrNet</a>
+      </p>
+      <p style="font-size: 0.74rem; color: #64748b;">
+        با بهره‌گیری از مستندات رسمی بانک مرکزی جمهوری اسلامی ایران (CBI) و شبکه پرداخت شاپرک.
+      </p>
+    </div>
+  </footer>
+
+  <script src="lib/iranian-banks.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>
