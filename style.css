@@ -366,23 +366,119 @@ header {
   padding: 24px;
   margin-bottom: 48px;
 }
-.code-tabs {
+
+.code-display {
+  position: relative;
+  margin-top: 14px;
+}
+
+.code-radio {
+  display: none;
+}
+
+.code-nav {
   display: flex;
   gap: 8px;
-  margin-bottom: 12px;
+  margin-bottom: 14px;
+  flex-wrap: wrap;
 }
-.code-box {
+
+.code-nav-btn {
+  padding: 8px 16px;
+  border-radius: 8px;
+  background: #090F20;
+  border: 1px solid #1E293B;
+  color: var(--text-muted);
+  font-family: inherit;
+  font-size: 0.82rem;
+  font-weight: 700;
+  cursor: pointer;
+  transition: all 0.15s ease;
+  user-select: none;
+}
+.code-nav-btn:hover {
+  color: #FFFFFF;
+  border-color: #334155;
+}
+
+#tab-js:checked ~ .code-nav label[for="tab-js"],
+#tab-py:checked ~ .code-nav label[for="tab-py"],
+#tab-php:checked ~ .code-nav label[for="tab-php"] {
+  background: var(--primary);
+  border-color: #6366F1;
+  color: #FFFFFF;
+  box-shadow: 0 2px 8px rgba(99, 102, 241, 0.35);
+}
+
+.code-panel {
+  display: none;
   background: #070B13;
   border: 1px solid #1E293B;
-  border-radius: 8px;
-  padding: 16px;
-  overflow-x: auto;
+  border-radius: 10px;
+  overflow: hidden;
+}
+
+#tab-js:checked ~ .panel-js,
+#tab-py:checked ~ .panel-py,
+#tab-php:checked ~ .panel-php {
+  display: block;
+}
+
+.code-box-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px 16px;
+  background: #090F20;
+  border-bottom: 1px solid #1E293B;
+  font-size: 0.76rem;
+  direction: ltr;
+}
+.code-box-header span.filename {
   font-family: var(--font-mono);
-  font-size: 0.82rem;
+  color: #38BDF8;
+  font-weight: 700;
+}
+
+.code-content-wrapper {
+  display: flex;
+  padding: 14px 0;
+  overflow-x: auto;
   direction: ltr;
   text-align: left;
-  color: #e2e8f0;
 }
+
+.line-numbers {
+  padding: 0 12px 0 16px;
+  user-select: none;
+  text-align: right;
+  color: #475569;
+  font-family: var(--font-mono);
+  font-size: 0.8rem;
+  line-height: 1.7;
+  border-right: 1px solid #1E293B;
+  min-width: 42px;
+  display: flex;
+  flex-direction: column;
+}
+
+.code-text {
+  padding: 0 16px;
+  font-family: var(--font-mono);
+  font-size: 0.8rem;
+  line-height: 1.7;
+  color: #F8FAFC;
+  white-space: pre;
+  flex: 1;
+  margin: 0;
+}
+
+/* Syntax Highlighting Tokens */
+.tok-kw { color: #F43F5E; font-weight: 600; } /* Keywords: const, import, def, etc. */
+.tok-fn { color: #38BDF8; font-weight: 500; } /* Functions & Methods */
+.tok-str { color: #21D3B2; } /* Strings */
+.tok-com { color: #64748B; font-style: italic; } /* Comments */
+.tok-num { color: #F59E0B; } /* Numbers & Booleans */
 
 footer {
   border-top: 1px solid var(--border);
