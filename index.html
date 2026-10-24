@@ -50,128 +50,6 @@
 
   <main class="container">
 
-    <!-- Code Integration Section with Syntax Highlighting and Line Numbers -->
-    <section class="code-section">
-      <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 8px; flex-wrap: wrap; gap: 8px;">
-        <h3 style="font-size: 1.15rem; font-weight: 800; color: #FFFFFF;">
-          🚀 کتابخانه‌های تک‌فایلی آماده (Zero-Dependency Client Libraries)
-        </h3>
-        <span class="badge" style="background: rgba(33, 211, 178, 0.1); border-color: #21D3B2; color: #21D3B2;">۱۰۰٪ بدون وابستگی خارجی</span>
-      </div>
-      <p style="font-size: 0.85rem; color: var(--text-muted); margin-bottom: 16px; line-height: 1.7;">
-        برای استفاده در سیستم‌ها، کافیست فایل منفرد مربوط به زبان خود را از پوشه <code style="color: #38BDF8; font-family: var(--font-mono);">lib/</code> به پروژه اضافه کنید:
-      </p>
-
-      <div class="code-display">
-        <input type="radio" name="codelang" id="tab-js" checked class="code-radio">
-        <input type="radio" name="codelang" id="tab-py" class="code-radio">
-        <input type="radio" name="codelang" id="tab-php" class="code-radio">
-
-        <div class="code-nav">
-          <label for="tab-js" class="code-nav-btn">JavaScript / TypeScript</label>
-          <label for="tab-py" class="code-nav-btn">Python</label>
-          <label for="tab-php" class="code-nav-btn">PHP</label>
-        </div>
-
-        <!-- JS PANEL -->
-        <div class="code-panel panel-js">
-          <div class="code-box-header">
-            <span class="filename">lib/iranian-banks.js</span>
-            <span style="color: #64748B;">Node.js / Browser / Bundlers</span>
-          </div>
-          <div class="code-content-wrapper">
-            <div class="line-numbers">
-              <span>1</span><span>2</span><span>3</span><span>4</span><span>5</span><span>6</span><span>7</span><span>8</span><span>9</span><span>10</span><span>11</span><span>12</span><span>13</span><span>14</span><span>15</span><span>16</span><span>17</span><span>18</span><span>19</span>
-            </div>
-            <pre class="code-text"><code><span class="tok-com">// 1. CommonJS or ESM Import (Zero external dependencies)</span>
-<span class="tok-kw">const</span> IranianBanks = <span class="tok-fn">require</span>(<span class="tok-str">'./lib/iranian-banks.js'</span>);
-
-<span class="tok-com">// 2. Intelligent Card and IBAN / SHEBA Autodetection</span>
-<span class="tok-kw">const</span> cardResult = IranianBanks.<span class="tok-fn">detect</span>(<span class="tok-str">'5022291234567890'</span>);
-console.<span class="tok-fn">log</span>(cardResult.bank.name_fa); <span class="tok-com">// "ویپاد (ترابانک پاسارگاد)"</span>
-console.<span class="tok-fn">log</span>(cardResult.bank.name_en); <span class="tok-com">// "WePod"</span>
-console.<span class="tok-fn">log</span>(cardResult.bank.color);   <span class="tok-com">// "#0E7490"</span>
-console.<span class="tok-fn">log</span>(cardResult.type);         <span class="tok-com">// "card"</span>
-console.<span class="tok-fn">log</span>(cardResult.valid);        <span class="tok-com">// true (Luhn algorithm verified)</span>
-
-<span class="tok-com">// 3. IBAN / SHEBA Check (ISO 7064 MOD 97-10 algorithm)</span>
-<span class="tok-kw">const</span> shebaResult = IranianBanks.<span class="tok-fn">detect</span>(<span class="tok-str">'IR020120000000000000000001'</span>);
-console.<span class="tok-fn">log</span>(shebaResult.bank.name_fa); <span class="tok-com">// "بانک ملت"</span>
-console.<span class="tok-fn">log</span>(shebaResult.valid);        <span class="tok-com">// true</span>
-
-<span class="tok-com">// 4. Standalone Validation Helpers</span>
-console.<span class="tok-fn">log</span>(IranianBanks.<span class="tok-fn">isValidCard</span>(<span class="tok-str">'6219861812345678'</span>)); <span class="tok-com">// true</span>
-console.<span class="tok-fn">log</span>(IranianBanks.<span class="tok-fn">isValidSheba</span>(<span class="tok-str">'IR1234567890'</span>));    <span class="tok-com">// false</span></code></pre>
-          </div>
-        </div>
-
-        <!-- PYTHON PANEL -->
-        <div class="code-panel panel-py">
-          <div class="code-box-header">
-            <span class="filename">lib/iranian_banks.py</span>
-            <span style="color: #64748B;">Python 3.7+</span>
-          </div>
-          <div class="code-content-wrapper">
-            <div class="line-numbers">
-              <span>1</span><span>2</span><span>3</span><span>4</span><span>5</span><span>6</span><span>7</span><span>8</span><span>9</span><span>10</span><span>11</span><span>12</span><span>13</span><span>14</span><span>15</span><span>16</span><span>17</span><span>18</span><span>19</span>
-            </div>
-            <pre class="code-text"><code><span class="tok-com"># 1. Import zero-dependency single-file library</span>
-<span class="tok-kw">import</span> iranian_banks <span class="tok-kw">as</span> ib
-
-<span class="tok-com"># 2. Intelligent Card and IBAN / SHEBA Autodetection</span>
-card_res = ib.<span class="tok-fn">detect</span>(<span class="tok-str">"6219861812345678"</span>)
-<span class="tok-fn">print</span>(card_res[<span class="tok-str">"bank"</span>][<span class="tok-str">"name_fa"</span>]) <span class="tok-com"># "بلوبانک (نئوبانک سامان)"</span>
-<span class="tok-fn">print</span>(card_res[<span class="tok-str">"bank"</span>][<span class="tok-str">"name_en"</span>]) <span class="tok-com"># "BluBank"</span>
-<span class="tok-fn">print</span>(card_res[<span class="tok-str">"bank"</span>][<span class="tok-str">"color"</span>])   <span class="tok-com"># "#004B87"</span>
-<span class="tok-fn">print</span>(card_res[<span class="tok-str">"type"</span>])            <span class="tok-com"># "card"</span>
-<span class="tok-fn">print</span>(card_res[<span class="tok-str">"valid"</span>])           <span class="tok-com"># True (Luhn verified)</span>
-
-<span class="tok-com"># 3. IBAN / SHEBA Check (ISO 7064 MOD 97-10 algorithm)</span>
-sheba_res = ib.<span class="tok-fn">detect</span>(<span class="tok-str">"IR020120000000000000000001"</span>)
-<span class="tok-fn">print</span>(sheba_res[<span class="tok-str">"bank"</span>][<span class="tok-str">"name_fa"</span>]) <span class="tok-com"># "بانک ملت"</span>
-<span class="tok-fn">print</span>(sheba_res[<span class="tok-str">"valid"</span>])           <span class="tok-com"># True</span>
-
-<span class="tok-com"># 4. Standalone Validation Helpers</span>
-<span class="tok-fn">print</span>(ib.<span class="tok-fn">is_valid_card</span>(<span class="tok-str">"5022291234567890"</span>)) <span class="tok-com"># True</span>
-<span class="tok-fn">print</span>(ib.<span class="tok-fn">is_valid_sheba</span>(<span class="tok-str">"IR1234567890"</span>))    <span class="tok-com"># False</span></code></pre>
-          </div>
-        </div>
-
-        <!-- PHP PANEL -->
-        <div class="code-panel panel-php">
-          <div class="code-box-header">
-            <span class="filename">lib/iranian-banks.php</span>
-            <span style="color: #64748B;">PHP 7.4+ / PHP 8+</span>
-          </div>
-          <div class="code-content-wrapper">
-            <div class="line-numbers">
-              <span>1</span><span>2</span><span>3</span><span>4</span><span>5</span><span>6</span><span>7</span><span>8</span><span>9</span><span>10</span><span>11</span><span>12</span><span>13</span><span>14</span><span>15</span><span>16</span><span>17</span><span>18</span><span>19</span>
-            </div>
-            <pre class="code-text"><code><span class="tok-kw">&lt;?php</span>
-<span class="tok-com">// 1. Require zero-dependency single-file library</span>
-<span class="tok-kw">require_once</span> __DIR__ . <span class="tok-str">'/lib/iranian-banks.php'</span>;
-<span class="tok-kw">use</span> MehrNetIranianBanks;
-
-<span class="tok-com">// 2. Intelligent Card and IBAN / SHEBA Autodetection</span>
- = IranianBanks::<span class="tok-fn">detect</span>(<span class="tok-str">'5022291234567890'</span>);
-<span class="tok-kw">echo</span> [<span class="tok-str">'bank'</span>][<span class="tok-str">'name_fa'</span>]; <span class="tok-com">// "ویپاد (ترابانک پاسارگاد)"</span>
-<span class="tok-kw">echo</span> [<span class="tok-str">'bank'</span>][<span class="tok-str">'name_en'</span>]; <span class="tok-com">// "WePod"</span>
-<span class="tok-kw">echo</span> [<span class="tok-str">'valid'</span>] ? <span class="tok-str">'معتبر'</span> : <span class="tok-str">'نامعتبر'</span>; <span class="tok-com">// "معتبر"</span>
-
-<span class="tok-com">// 3. IBAN / SHEBA Check (ISO 7064 MOD 97-10 algorithm)</span>
- = IranianBanks::<span class="tok-fn">detect</span>(<span class="tok-str">'IR020120000000000000000001'</span>);
-<span class="tok-kw">echo</span> [<span class="tok-str">'bank'</span>][<span class="tok-str">'name_fa'</span>]; <span class="tok-com">// "بانک ملت"</span>
-<span class="tok-kw">echo</span> [<span class="tok-str">'valid'</span>] ? <span class="tok-str">'معتبر'</span> : <span class="tok-str">'نامعتبر'</span>; <span class="tok-com">// "معتبر"</span>
-
-<span class="tok-com">// 4. Standalone Validation Helpers</span>
-<span class="tok-fn">var_dump</span>(IranianBanks::<span class="tok-fn">isValidCard</span>(<span class="tok-str">'6219861812345678'</span>)); <span class="tok-com">// bool(true)</span>
-<span class="tok-fn">var_dump</span>(IranianBanks::<span class="tok-fn">isValidSheba</span>(<span class="tok-str">'IR1234567890'</span>));    <span class="tok-com">// bool(false)</span></code></pre>
-          </div>
-        </div>
-
-      </div>
-    </section>
-
     <!-- Header for Banks Grid -->
     <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px; flex-wrap: wrap; gap: 10px;">
       <h3 style="font-size: 1.2rem; font-weight: 800; color: #FFFFFF;">
@@ -1478,6 +1356,128 @@ sheba_res = ib.<span class="tok-fn">detect</span>(<span class="tok-str">"IR02012
         </div>
       </article>
     </div>
+
+    <!-- Code Integration Section with Syntax Highlighting and Line Numbers (At the end of banks list) -->
+    <section class="code-section" style="margin-top: 40px;">
+      <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 8px; flex-wrap: wrap; gap: 8px;">
+        <h3 style="font-size: 1.15rem; font-weight: 800; color: #FFFFFF;">
+          🚀 کتابخانه‌های تک‌فایلی آماده (Zero-Dependency Client Libraries)
+        </h3>
+        <span class="badge" style="background: rgba(33, 211, 178, 0.1); border-color: #21D3B2; color: #21D3B2;">۱۰۰٪ بدون وابستگی خارجی</span>
+      </div>
+      <p style="font-size: 0.85rem; color: var(--text-muted); margin-bottom: 16px; line-height: 1.7;">
+        برای استفاده در سیستم‌ها، کافیست فایل منفرد مربوط به زبان خود را از پوشه <code style="color: #38BDF8; font-family: var(--font-mono);">lib/</code> به پروژه اضافه کنید:
+      </p>
+
+      <div class="code-display">
+        <input type="radio" name="codelang" id="tab-js" checked class="code-radio">
+        <input type="radio" name="codelang" id="tab-py" class="code-radio">
+        <input type="radio" name="codelang" id="tab-php" class="code-radio">
+
+        <div class="code-nav">
+          <label for="tab-js" class="code-nav-btn">JavaScript / TypeScript</label>
+          <label for="tab-py" class="code-nav-btn">Python</label>
+          <label for="tab-php" class="code-nav-btn">PHP</label>
+        </div>
+
+        <!-- JS PANEL -->
+        <div class="code-panel panel-js">
+          <div class="code-box-header">
+            <span class="filename">lib/iranian-banks.js</span>
+            <span style="color: #64748B;">Node.js / Browser / Bundlers</span>
+          </div>
+          <div class="code-content-wrapper">
+            <div class="line-numbers">
+              <span>1</span><span>2</span><span>3</span><span>4</span><span>5</span><span>6</span><span>7</span><span>8</span><span>9</span><span>10</span><span>11</span><span>12</span><span>13</span><span>14</span><span>15</span><span>16</span><span>17</span><span>18</span><span>19</span>
+            </div>
+            <pre class="code-text"><code><span class="tok-com">// 1. CommonJS or ESM Import (Zero external dependencies)</span>
+<span class="tok-kw">const</span> IranianBanks = <span class="tok-fn">require</span>(<span class="tok-str">'./lib/iranian-banks.js'</span>);
+
+<span class="tok-com">// 2. Intelligent Card and IBAN / SHEBA Autodetection</span>
+<span class="tok-kw">const</span> cardResult = IranianBanks.<span class="tok-fn">detect</span>(<span class="tok-str">'5022291234567890'</span>);
+console.<span class="tok-fn">log</span>(cardResult.bank.name_fa); <span class="tok-com">// "ویپاد (ترابانک پاسارگاد)"</span>
+console.<span class="tok-fn">log</span>(cardResult.bank.name_en); <span class="tok-com">// "WePod"</span>
+console.<span class="tok-fn">log</span>(cardResult.bank.color);   <span class="tok-com">// "#0E7490"</span>
+console.<span class="tok-fn">log</span>(cardResult.type);         <span class="tok-com">// "card"</span>
+console.<span class="tok-fn">log</span>(cardResult.valid);        <span class="tok-com">// true (Luhn algorithm verified)</span>
+
+<span class="tok-com">// 3. IBAN / SHEBA Check (ISO 7064 MOD 97-10 algorithm)</span>
+<span class="tok-kw">const</span> shebaResult = IranianBanks.<span class="tok-fn">detect</span>(<span class="tok-str">'IR020120000000000000000001'</span>);
+console.<span class="tok-fn">log</span>(shebaResult.bank.name_fa); <span class="tok-com">// "بانک ملت"</span>
+console.<span class="tok-fn">log</span>(shebaResult.valid);        <span class="tok-com">// true</span>
+
+<span class="tok-com">// 4. Standalone Validation Helpers</span>
+console.<span class="tok-fn">log</span>(IranianBanks.<span class="tok-fn">isValidCard</span>(<span class="tok-str">'6219861812345678'</span>)); <span class="tok-com">// true</span>
+console.<span class="tok-fn">log</span>(IranianBanks.<span class="tok-fn">isValidSheba</span>(<span class="tok-str">'IR1234567890'</span>));    <span class="tok-com">// false</span></code></pre>
+          </div>
+        </div>
+
+        <!-- PYTHON PANEL -->
+        <div class="code-panel panel-py">
+          <div class="code-box-header">
+            <span class="filename">lib/iranian_banks.py</span>
+            <span style="color: #64748B;">Python 3.7+</span>
+          </div>
+          <div class="code-content-wrapper">
+            <div class="line-numbers">
+              <span>1</span><span>2</span><span>3</span><span>4</span><span>5</span><span>6</span><span>7</span><span>8</span><span>9</span><span>10</span><span>11</span><span>12</span><span>13</span><span>14</span><span>15</span><span>16</span><span>17</span><span>18</span><span>19</span>
+            </div>
+            <pre class="code-text"><code><span class="tok-com"># 1. Import zero-dependency single-file library</span>
+<span class="tok-kw">import</span> iranian_banks <span class="tok-kw">as</span> ib
+
+<span class="tok-com"># 2. Intelligent Card and IBAN / SHEBA Autodetection</span>
+card_res = ib.<span class="tok-fn">detect</span>(<span class="tok-str">"6219861812345678"</span>)
+<span class="tok-fn">print</span>(card_res[<span class="tok-str">"bank"</span>][<span class="tok-str">"name_fa"</span>]) <span class="tok-com"># "بلوبانک (نئوبانک سامان)"</span>
+<span class="tok-fn">print</span>(card_res[<span class="tok-str">"bank"</span>][<span class="tok-str">"name_en"</span>]) <span class="tok-com"># "BluBank"</span>
+<span class="tok-fn">print</span>(card_res[<span class="tok-str">"bank"</span>][<span class="tok-str">"color"</span>])   <span class="tok-com"># "#004B87"</span>
+<span class="tok-fn">print</span>(card_res[<span class="tok-str">"type"</span>])            <span class="tok-com"># "card"</span>
+<span class="tok-fn">print</span>(card_res[<span class="tok-str">"valid"</span>])           <span class="tok-com"># True (Luhn verified)</span>
+
+<span class="tok-com"># 3. IBAN / SHEBA Check (ISO 7064 MOD 97-10 algorithm)</span>
+sheba_res = ib.<span class="tok-fn">detect</span>(<span class="tok-str">"IR020120000000000000000001"</span>)
+<span class="tok-fn">print</span>(sheba_res[<span class="tok-str">"bank"</span>][<span class="tok-str">"name_fa"</span>]) <span class="tok-com"># "بانک ملت"</span>
+<span class="tok-fn">print</span>(sheba_res[<span class="tok-str">"valid"</span>])           <span class="tok-com"># True</span>
+
+<span class="tok-com"># 4. Standalone Validation Helpers</span>
+<span class="tok-fn">print</span>(ib.<span class="tok-fn">is_valid_card</span>(<span class="tok-str">"5022291234567890"</span>)) <span class="tok-com"># True</span>
+<span class="tok-fn">print</span>(ib.<span class="tok-fn">is_valid_sheba</span>(<span class="tok-str">"IR1234567890"</span>))    <span class="tok-com"># False</span></code></pre>
+          </div>
+        </div>
+
+        <!-- PHP PANEL -->
+        <div class="code-panel panel-php">
+          <div class="code-box-header">
+            <span class="filename">lib/iranian-banks.php</span>
+            <span style="color: #64748B;">PHP 7.4+ / PHP 8+</span>
+          </div>
+          <div class="code-content-wrapper">
+            <div class="line-numbers">
+              <span>1</span><span>2</span><span>3</span><span>4</span><span>5</span><span>6</span><span>7</span><span>8</span><span>9</span><span>10</span><span>11</span><span>12</span><span>13</span><span>14</span><span>15</span><span>16</span><span>17</span><span>18</span><span>19</span>
+            </div>
+            <pre class="code-text"><code><span class="tok-kw">&lt;?php</span>
+<span class="tok-com">// 1. Require zero-dependency single-file library</span>
+<span class="tok-kw">require_once</span> __DIR__ . <span class="tok-str">'/lib/iranian-banks.php'</span>;
+<span class="tok-kw">use</span> MehrNet\IranianBanks;
+
+<span class="tok-com">// 2. Intelligent Card and IBAN / SHEBA Autodetection</span>
+$card = IranianBanks::<span class="tok-fn">detect</span>(<span class="tok-str">'5022291234567890'</span>);
+<span class="tok-kw">echo</span> $card[<span class="tok-str">'bank'</span>][<span class="tok-str">'name_fa'</span>]; <span class="tok-com">// "ویپاد (ترابانک پاسارگاد)"</span>
+<span class="tok-kw">echo</span> $card[<span class="tok-str">'bank'</span>][<span class="tok-str">'name_en'</span>]; <span class="tok-com">// "WePod"</span>
+<span class="tok-kw">echo</span> $card[<span class="tok-str">'valid'</span>] ? <span class="tok-str">'معتبر'</span> : <span class="tok-str">'نامعتبر'</span>; <span class="tok-com">// "معتبر"</span>
+
+<span class="tok-com">// 3. IBAN / SHEBA Check (ISO 7064 MOD 97-10 algorithm)</span>
+$sheba = IranianBanks::<span class="tok-fn">detect</span>(<span class="tok-str">'IR020120000000000000000001'</span>);
+<span class="tok-kw">echo</span> $sheba[<span class="tok-str">'bank'</span>][<span class="tok-str">'name_fa'</span>]; <span class="tok-com">// "بانک ملت"</span>
+<span class="tok-kw">echo</span> $sheba[<span class="tok-str">'valid'</span>] ? <span class="tok-str">'معتبر'</span> : <span class="tok-str">'نامعتبر'</span>; <span class="tok-com">// "معتبر"</span>
+
+<span class="tok-com">// 4. Standalone Validation Helpers</span>
+<span class="tok-fn">var_dump</span>(IranianBanks::<span class="tok-fn">isValidCard</span>(<span class="tok-str">'6219861812345678'</span>)); <span class="tok-com">// bool(true)</span>
+<span class="tok-fn">var_dump</span>(IranianBanks::<span class="tok-fn">isValidSheba</span>(<span class="tok-str">'IR1234567890'</span>));    <span class="tok-com">// bool(false)</span></code></pre>
+          </div>
+        </div>
+
+      </div>
+    </section>
 
   </main>
 
